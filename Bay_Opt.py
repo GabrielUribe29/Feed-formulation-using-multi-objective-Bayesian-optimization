@@ -15,7 +15,7 @@ from Acq_funct import (optimize_qNehvi_and_get_observation,
 from botorch.utils.multi_objective.box_decompositions.non_dominated import (
     FastNondominatedPartitioning,
 )
-from botorch import  fit_gpytorch_mll
+from botorch import fit_gpytorch_model
 from botorch.sampling import SobolQMCNormalSampler
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
@@ -40,7 +40,7 @@ def BO_feed(Seeds, Init_samples,num_exp):
     Output=[]
 
     for i in range(num_exp):
-        N_BATCH = 5 if not SMOKE_TEST else 10
+        N_BATCH = 50 if not SMOKE_TEST else 10
         Mc_samples = 256 if not SMOKE_TEST else 16
         seed_index = i % len(Seeds)
         S = Seeds[seed_index]
@@ -71,7 +71,7 @@ def BO_feed(Seeds, Init_samples,num_exp):
             t0 = time.monotonic()
 
             # fit the models
-            fit_gpytorch_mll(mll_ehvi)
+            fit_gpytorch_model(mll_ehvi)
 
             # define the qEI and qNEI acquisition modules using a QMC sampler
 

@@ -327,7 +327,7 @@ def Pena_constant_constraints():
             Co,
             143,
         ),
-    ]
+        ]
 
     eqconstr = [
         (
@@ -335,6 +335,6 @@ def Pena_constant_constraints():
             ones,
             1,
         ),
-    ]
+        ]
 
     return ineqconstr, eqconstr

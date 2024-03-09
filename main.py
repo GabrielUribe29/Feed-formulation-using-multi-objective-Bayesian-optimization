@@ -27,7 +27,8 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
 
-seeds = np.random.randint(1, 300000, 2)
+#seeds = np.random.randint(1, 300000, 1)
+seeds=np.array([149763])
 Seeds = seeds.tolist()
 print(Seeds)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
@@ -36,8 +37,8 @@ x,y=generate_initial_data(50)
 mll, model =initialize_model(x,y)
 inc, eqc=Pena_constant_constraints()
 sampler=SobolQMCNormalSampler(512)
-optimizer=optimize_qehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
-print(BO_feed(Seeds=Seeds, Init_samples=50, num_exp=2))
+optimizer=optimize_qNehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
+print(BO_feed(Seeds=Seeds, Init_samples=10, num_exp=1))
 
 
 
