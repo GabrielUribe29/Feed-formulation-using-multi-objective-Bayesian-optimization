@@ -98,8 +98,8 @@ def BO_feed(Seeds, Init_samples,num_exp):
 
             t1 = time.monotonic()
 
-            Output=[S, train_x_ehvi, train_obj_ehvi, bd.pareto_Y.shape[0], HV, Card]
-            Data.append(Output)
+        Output=[S, train_x_ehvi, train_obj_ehvi, HV, Card]
+        Data.append(Output)
 
     return Data
 
