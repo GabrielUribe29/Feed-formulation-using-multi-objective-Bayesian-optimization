@@ -2,7 +2,7 @@ from botorch.models.gp_regression import FixedNoiseGP
 from botorch.models.model_list_gp_regression import ModelListGP
 from botorch.models.transforms.outcome import Standardize
 from gpytorch.mlls.sum_marginal_log_likelihood import SumMarginalLogLikelihood
-from botorch.utils.transforms import unnormalize, normalize
+from botorch.utils.transforms import normalize
 
 import torch
 import numpy as np
@@ -11,8 +11,8 @@ tkwargs = {"dtype": torch.float64,
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu"),
 }
 
-from pena_function import Pena_func
-from GeneratorSampling import gensamples
+from feedBO.pena_function import Pena_func
+from feedBO.GeneratorSampling import gensamples
 
 NOISE_SE = torch.tensor([0.1, 0.1, 0.1], **tkwargs)
 

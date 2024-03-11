@@ -5,12 +5,11 @@ import numpy as np
 import time
 
 
-from evaluation_func import (generate_initial_data,
+from feedBO.evaluation_func import (generate_initial_data,
                              initialize_model
                              )
-from Acq_funct import (optimize_qNehvi_and_get_observation,
-                       optimize_qehvi_and_get_observation
-                       )
+from feedBO.Acq_funct import (optimize_qehvi_and_get_observation
+                              )
 
 from botorch.utils.multi_objective.box_decompositions.non_dominated import (
     FastNondominatedPartitioning,
