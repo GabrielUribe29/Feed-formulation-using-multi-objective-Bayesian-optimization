@@ -37,8 +37,3 @@ inc, eqc=Pena_constant_constraints()
 #sampler=SobolQMCNormalSampler(512)
 #optimizer=optimize_qNehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
 print(BO_feed(Seeds=Seeds, Init_samples=10, num_exp=1))
-print(inc)
-
-
-
-
