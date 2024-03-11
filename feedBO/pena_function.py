@@ -91,8 +91,6 @@ def Pena_func(X):
 
     return problem
 
-import torch
-
 def Pena_constant_constraints():
     supbd = 10
     Ene = torch.as_tensor(
