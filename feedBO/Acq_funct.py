@@ -8,8 +8,8 @@ from botorch.utils.multi_objective.box_decompositions.non_dominated import (
 from botorch.acquisition.multi_objective.monte_carlo import qExpectedHypervolumeImprovement, qNoisyExpectedHypervolumeImprovement
 from botorch.optim.optimize import optimize_acqf
 
-from feedBO.constraints import Pena_constant_constraints
-from feedBO.pena_function import Pena_func
+#from feedBO.constraints import Pena_constant_constraints
+from feedBO.pena_function import (Pena_func, Pena_constant_constraints)
 
 tkwargs = {"dtype": torch.float64,
     "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
