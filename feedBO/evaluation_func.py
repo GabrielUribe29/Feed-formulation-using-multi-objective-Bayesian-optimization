@@ -11,8 +11,8 @@ tkwargs = {"dtype": torch.float64,
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu"),
 }
 
-from feedBO.pena_function import Pena_func
-from feedBO.GeneratorSampling import gensamples
+from pena_function import Pena_func
+from GeneratorSampling import gensamples
 
 NOISE_SE = torch.tensor([0.1, 0.1, 0.1], **tkwargs)
 
