@@ -4,7 +4,7 @@ import torch
 import numpy as np
 from botorch.sampling import SobolQMCNormalSampler
 from feedBO.evaluation_func import (generate_initial_data, initialize_model)
-from feedBO.constraints import Pena_constant_constraints
+from feedBO.pena_function import Pena_constant_constraints
 from feedBO.Acq_funct import optimize_qNehvi_and_get_observation
 from feedBO.Bay_Opt import BO_feed
 
