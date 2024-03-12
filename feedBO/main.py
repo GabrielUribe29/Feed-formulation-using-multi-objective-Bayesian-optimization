@@ -3,11 +3,11 @@
 import torch
 import numpy as np
 from botorch.sampling import SobolQMCNormalSampler
-from feedBO.evaluation_func import (generate_initial_data, initialize_model)
-from feedBO.pena_function import Pena_func
-from feedBO.GeneratorSampling import gensamples
-from feedBO.Acq_funct import optimize_qNehvi_and_get_observation
-from feedBO.Bay_Opt import BO_feed
+from evaluation_func import (generate_initial_data, initialize_model)
+from pena_function import Pena_func
+from GeneratorSampling import gensamples
+from Acq_funct import optimize_qNehvi_and_get_observation
+from Bay_Opt import BO_feed
 
 tkwargs = {"dtype": torch.float64,
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu"),
