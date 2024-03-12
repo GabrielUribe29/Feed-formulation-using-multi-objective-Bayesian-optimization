@@ -63,6 +63,3 @@ def initialize_model(train_x, train_obj):
     model = ModelListGP(*models)
     mll = SumMarginalLogLikelihood(model.likelihood, model)
     return mll, model
-
-
-print(generate_initial_data(5))
