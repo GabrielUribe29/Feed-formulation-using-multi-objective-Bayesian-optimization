@@ -4,6 +4,8 @@ import torch
 import numpy as np
 from botorch.sampling import SobolQMCNormalSampler
 from feedBO.evaluation_func import (generate_initial_data, initialize_model)
+from feedBO.pena_function import Pena_func
+from feedBO.GeneratorSampling import gensamples
 from feedBO.Acq_funct import optimize_qNehvi_and_get_observation
 from feedBO.Bay_Opt import BO_feed
 
@@ -30,7 +32,7 @@ Seeds = seeds.tolist()
 print(Seeds)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 x,y=generate_initial_data(50)
-#print(y)
+print(y)
 mll, model =initialize_model(x,y)
 #sampler=SobolQMCNormalSampler(512)
 #optimizer=optimize_qNehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
