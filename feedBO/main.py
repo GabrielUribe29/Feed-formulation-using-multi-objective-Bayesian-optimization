@@ -30,7 +30,6 @@ if __name__ == '__main__':
 seeds=np.array([149763])
 Seeds = seeds.tolist()
 print(Seeds)
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
 x,y=generate_initial_data(50)
 print(y)
 mll, model =initialize_model(x,y)
