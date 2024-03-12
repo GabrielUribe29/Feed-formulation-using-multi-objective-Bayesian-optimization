@@ -18,11 +18,6 @@ from feedBO.feedBO.evaluation_func import generate_initial_data, initialize_mode
 from feedBO.feedBO.Acq_funct import optimize_qehvi_and_get_observation, optimize_qNehvi_and_get_observation
 from feedBO.feedBO.Bay_Opt import BO_feed
 ```
-* Import Quasi MonteCarlo samples from Botorch
-```
-from botorch.sampling import SobolQMCNormalSampler
-sampler=SobolQMCNormalSampler(512)
-```
 * Generate random seeds
 ```
 seeds = np.random.randint(1, 300000, 1)
