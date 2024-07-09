@@ -29,3 +29,17 @@ or run
 ```
 main.py
 ```
+
+If you find our work helpful, please consider citing our paper using:
+
+```
+@article{uribe2024feed,
+  title={Feed formulation using multi-objective Bayesian optimization},
+  author={Uribe-Guerra, Gabriel D and M{\'u}nera-Ram{\'\i}rez, Danny A and Arias-Londo{\~n}o, Juli{\'a}n D},
+  journal={Computers and Electronics in Agriculture},
+  volume={224},
+  pages={109173},
+  year={2024},
+  publisher={Elsevier}
+}
+```
