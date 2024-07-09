@@ -1,10 +1,11 @@
 import torch
 import os
 
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 
-tkwargs = {"dtype": torch.float64,
+tkwargs = {
+    "dtype": torch.float64,
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu"),
 }
 SMOKE_TEST = os.environ.get("SMOKE_TEST")
@@ -32,7 +33,8 @@ def Pena_func(X):
             136.73,
             300.5,
         ],
-        dtype=torch.float64, device='cuda:0'
+        dtype=torch.float64,
+        device=tkwargs["device"],
     )
     W_Energy = torch.tensor(
         [
@@ -54,7 +56,8 @@ def Pena_func(X):
             15.2728,
             0,
         ],
-        dtype=torch.float64, device='cuda:0'
+        dtype=torch.float64,
+        device=tkwargs["device"],
     )
     W_Lysine = torch.tensor(
         [
@@ -76,7 +79,8 @@ def Pena_func(X):
             0.34,
             0,
         ],
-        dtype=torch.float64, device='cuda:0'
+        dtype=torch.float64,
+        device=tkwargs["device"],
     )
     Costs = W_Costs.to(X.dtype)
     Energy = W_Energy.to(X.dtype)
@@ -86,8 +90,6 @@ def Pena_func(X):
     f2 = torch.matmul(X, Lysine.unsqueeze(1)).squeeze(1)
     f3 = torch.matmul(X, Energy.unsqueeze(1)).squeeze(1)
 
-
     problem = torch.stack([f1, f2, f3], dim=-1)
 
     return problem
-

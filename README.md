@@ -13,11 +13,8 @@ git clone https://github.com/GabrielUribe29/MOBO-feed.git
 
 * Import each function
 ```
-from feedBO.feedBO.GeneratorSampling import gensamples
-from feedBO.feedBO.pena_function import Pena_func
-from feedBO.feedBO.evaluation_func import generate_initial_data, initialize_model
-from feedBO.feedBO.Acq_funct import optimize_qehvi_and_get_observation, optimize_qNehvi_and_get_observation
-from feedBO.feedBO.Bay_Opt import BO_feed
+import numpy as np
+from feedBO.Bay_Opt import BO_feed
 ```
 * Generate random seeds
 ```
@@ -27,4 +24,8 @@ Seeds = seeds.tolist()
 * Get results for one experiment with
 ```
 BO_feed(Seeds=Seeds, Init_samples=50, num_exp=1)
+```
+or run 
+```
+main.py
 ```
