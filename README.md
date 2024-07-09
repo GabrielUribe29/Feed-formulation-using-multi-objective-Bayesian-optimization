@@ -1,6 +1,8 @@
 # Feed Formulation using multi-objective Bayesian optimization
 
-This project focuses on feed formulation using Bayesian optimization techniques, specifically utilizing q-Expected Hypervolume Improvement (qEHVI) and q-Noisy Expected Hypervolume Improvement (qNEHVI) acquisition functions.
+This project focuses on feed formulation using Bayesian optimization techniques, specifically utilizing q-LogExpected Hypervolume Improvement (qEHVI) and q-LogNoisy Expected Hypervolume Improvement (qNEHVI) acquisition functions.
+
+This branch applies the Dimensionality-scaled lengthscale prior to the GP kernel using a Log-Normal distribution to increase the lengthscale at a rate proportion to the dimensionality of the problem. See: Hvarfner, C., Hellsten, E. O., & Nardi, L. (2024). Vanilla Bayesian Optimization Performs Great in High Dimension. arXiv preprint arXiv:2402.02229
 
 ## Installation
 
