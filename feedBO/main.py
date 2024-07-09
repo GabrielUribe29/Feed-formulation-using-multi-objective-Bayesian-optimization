@@ -12,15 +12,14 @@ tkwargs = {
 }
 
 if __name__ == "__main__":
-
-# seeds = np.random.randint(1, 300000, 1)
-seeds = np.array([149763])
-Seeds = seeds.tolist()
-print(Seeds)
-x, y = generate_initial_data(50)
-print(y)
-mll, model = initialize_model(x, y)
-sampler = SobolQMCNormalSampler(512)
-# optimizer=optimize_qNehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
-Exp1 = BO_feed(Seeds=Seeds, Init_samples=50, num_exp=1)
-print(Exp1)
+    # seeds = np.random.randint(1, 300000, 1)
+    seeds = np.array([149763])
+    Seeds = seeds.tolist()
+    print(Seeds)
+    x, y = generate_initial_data(50)
+    print(y)
+    mll, model = initialize_model(x, y)
+    sampler = SobolQMCNormalSampler(512)
+    # optimizer=optimize_qNehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
+    Exp1 = BO_feed(Seeds=Seeds, Init_samples=50, num_exp=1)
+    print(Exp1)
