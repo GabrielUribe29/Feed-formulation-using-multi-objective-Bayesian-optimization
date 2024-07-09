@@ -5,38 +5,46 @@ from botorch.utils.transforms import normalize
 from botorch.utils.multi_objective.box_decompositions.non_dominated import (
     FastNondominatedPartitioning,
 )
-from botorch.acquisition.multi_objective.monte_carlo import qExpectedHypervolumeImprovement, qNoisyExpectedHypervolumeImprovement
+from botorch.acquisition.multi_objective.monte_carlo import (
+    qExpectedHypervolumeImprovement,
+    qNoisyExpectedHypervolumeImprovement,
+)
+from botorch.acquisition.multi_objective.logei import (
+    qLogExpectedHypervolumeImprovement,
+    qLogNoisyExpectedHypervolumeImprovement,
+)
 from botorch.optim.optimize import optimize_acqf
 
 from pena_function import Pena_func
 
-tkwargs = {"dtype": torch.float64,
+tkwargs = {
+    "dtype": torch.float64,
     "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
 }
 
-ref_point=torch.tensor([-170,0,0], dtype=torch.float64)
+ref_point = torch.tensor([-170, 0, 0], dtype=torch.float64)
 
 bound = np.array(
-            [
-                0.4,
-                0.4,
-                0.4,
-                0.05,
-                0.22,
-                1,
-                0.04,
-                0.08,
-                1,
-                0.0065,
-                0.06,
-                0.04,
-                0.05,
-                0.1,
-                0.15,
-                0.2,
-                1,
-            ]
-        )
+    [
+        0.4,
+        0.4,
+        0.4,
+        0.05,
+        0.22,
+        1,
+        0.04,
+        0.08,
+        1,
+        0.0065,
+        0.06,
+        0.04,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        1,
+    ]
+)
 lu, ub = torch.zeros(17), torch.as_tensor(bound)
 bounds = torch.stack((lu, ub), dim=0)
 
@@ -380,7 +388,8 @@ def Pena_constant_constraints():
 
     return ineqconstr, eqconstr
 
-inc, eqc=Pena_constant_constraints()
+
+inc, eqc = Pena_constant_constraints()
 
 
 def optimize_qNehvi_and_get_observation(model, train_x, sampler):
@@ -389,12 +398,11 @@ def optimize_qNehvi_and_get_observation(model, train_x, sampler):
     with torch.no_grad():
         pred = model.posterior(normalize(train_x, bounds)).mean
 
-    acq_func = qNoisyExpectedHypervolumeImprovement(
+    acq_func = qLogNoisyExpectedHypervolumeImprovement(
         model=model,
         ref_point=ref_point.tolist(),
         X_baseline=normalize(train_x, bounds=bounds),
         sampler=sampler,
-
     )
     # optimize
     candidates, _ = optimize_acqf(
@@ -420,14 +428,13 @@ def optimize_qehvi_and_get_observation(model, train_x, sampler):
     # partition non-dominated space into disjoint rectangles
     with torch.no_grad():
         pred = model.posterior(normalize(train_x, bounds)).mean
-    partitioning = FastNondominatedPartitioning(ref_point=ref_point,Y=pred)
+    partitioning = FastNondominatedPartitioning(ref_point=ref_point, Y=pred)
 
-    acq_func = qExpectedHypervolumeImprovement(
+    acq_func = qLogExpectedHypervolumeImprovement(
         model=model,
         ref_point=ref_point.tolist(),
         partitioning=partitioning,
         sampler=sampler,
-
     )
     # optimize
     candidates, _ = optimize_acqf(

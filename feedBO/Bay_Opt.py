@@ -2,8 +2,6 @@ import os
 import torch
 import numpy as np
 
-import time
-
 from evaluation_func import generate_initial_data, initialize_model
 from Acq_funct import optimize_qehvi_and_get_observation
 
@@ -63,8 +61,6 @@ def BO_feed(Seeds, Init_samples, num_exp):
         np.random.seed(S)
         torch.manual_seed(S)
 
-        verbose = True
-
         HV = []
         Card = []
 
@@ -80,7 +76,7 @@ def BO_feed(Seeds, Init_samples, num_exp):
         HV.append(volume)
 
         # run N_BATCH rounds of BayesOpt after the initial random batch
-        for iteration in range(1, N_BATCH + 1):
+        for _ in range(1, N_BATCH + 1):
 
             # fit the models
             fit_gpytorch_model(mll_ehvi)
