@@ -6,7 +6,8 @@ This project focuses on feed formulation using Bayesian optimization techniques,
 
 * Clone the repo with
 ```
-git clone https://github.com/GabrielUribe29/Feed-formulation-using-multi-objective-Bayesian-optimization.git
+git clone https://github.com/GabrielUribe29/MOBO-feed.git
+
 ```
 ## Usage
 
