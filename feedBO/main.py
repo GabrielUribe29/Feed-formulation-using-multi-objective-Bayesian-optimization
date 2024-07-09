@@ -2,8 +2,7 @@
 
 import torch
 import numpy as np
-from botorch.sampling import SobolQMCNormalSampler
-from evaluation_func import generate_initial_data, initialize_model
+from evaluation_func import generate_initial_data
 from Bay_Opt import BO_feed
 
 tkwargs = {
@@ -11,15 +10,19 @@ tkwargs = {
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu"),
 }
 
-if __name__ == "__main__":
-    # seeds = np.random.randint(1, 300000, 1)
+
+def Optimize():
     seeds = np.array([149763])
     Seeds = seeds.tolist()
-    print(Seeds)
-    x, y = generate_initial_data(50)
+    _, y = generate_initial_data(50)
+    print("Initial target data:")
     print(y)
-    mll, model = initialize_model(x, y)
-    sampler = SobolQMCNormalSampler(512)
-    # optimizer=optimize_qNehvi_and_get_observation(model=model, sampler=sampler, train_x=x)
     Exp1 = BO_feed(Seeds=Seeds, Init_samples=50, num_exp=1)
+    print("Candidate solutions found by BO:")
     print(Exp1)
+    return
+
+
+if __name__ == "__main__":
+    print("Starting optimization...")
+    Optimize()
